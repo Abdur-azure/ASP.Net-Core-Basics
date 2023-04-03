@@ -6,8 +6,15 @@
 
 <h2>Index</h2>
 
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Information : </strong> @TempData["InfoMessage"]
+    </div>
+}
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create Product", "Create", null, new {@class = "btn btn-primary"})
 </p>
 <table class="table">
     <tr>
@@ -23,29 +30,30 @@
         <th>
             @Html.DisplayNameFor(model => model.remarks)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.productName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.qty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.remarks)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.productId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.productId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.productId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remarks)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.productId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.productId }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.productId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

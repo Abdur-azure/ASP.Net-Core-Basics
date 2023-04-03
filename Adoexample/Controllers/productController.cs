@@ -14,6 +14,12 @@ namespace Adoexample.Controllers
         public ActionResult Index()
         {
             var productList = _productDAL.getAllProducts();
+
+            if(productList.Count == 0)
+            {
+                TempData["InfoMessage"] = "Currently no products in Database";
+            }
+
             return View(productList);
         }
 
