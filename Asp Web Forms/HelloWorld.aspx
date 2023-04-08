@@ -69,7 +69,7 @@
                         <asp:TextBox runat="server" ID="txtTableMiddleInitial" Width="20px"/>
                     </asp:TableCell>
                 </asp:TableRow>
-            </asp:Table><br />
+            </asp:Table>
             <asp:Button runat="server" ID="btnTableSave" OnClick="btnTableSave_Click" Text="Save" />
         </div>
     </form>
