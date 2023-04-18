@@ -13,10 +13,11 @@
         </div>
         <br />
         <div>
-            <asp:Label runat="server" Font-Bold="true" Text="Employee" /><br />
-            <asp:Label runat="server" Text="Last Name" /><br />
-            <asp:Label runat="server" Text="First Name" /><br />
-            <asp:Label runat="server" Text="Middle Initial" /><br />
+            <marquee runat="server" direction="right" style="width:auto; margin-left: 0px; height: 30px; margin-bottom: 0px;">
+                <strong>
+                    <asp:Label runat="server" ID="lblMarquee" ForeColor="Red" ></asp:Label>
+                </strong>
+            </marquee>
         </div>
         <br />
         <div>

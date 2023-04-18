@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,6 +13,19 @@ namespace Asp_Web_Forms
         protected void Page_Load(object sender, EventArgs e)
         {
             calDate.SelectedDate = DateTime.Today;
+
+            DataTable dt = getLatestMarqueeText();
+            lblMarquee.Text = dt.Rows[1]["marqueeText"].ToString();
+        }
+        
+        private DataTable getLatestMarqueeText()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Conn"].ConnectionString);
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM [ado_example].[dbo].[marqueeConf] ORDER BY modifiedOn DESC", sqlConnection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+            sqlDataAdapter.Fill(dt);
+            return dt;
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -169,5 +186,6 @@ namespace Asp_Web_Forms
                 panShippingAddress.Visible = false;
             }
         }
+
     }
 }
